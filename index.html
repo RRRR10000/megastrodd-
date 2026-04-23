@@ -15,6 +15,7 @@
             min-height: 500px;
             overflow: hidden;
         }
+        
         .slider-slide {
             position: absolute;
             top: 0;
@@ -28,10 +29,12 @@
             display: flex;
             align-items: center;
         }
+        
         .slider-slide.active {
             opacity: 1;
             z-index: 1;
         }
+        
         .slider-slide::before {
             content: '';
             position: absolute;
@@ -41,6 +44,7 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.55);
         }
+        
         .slider-content {
             position: relative;
             z-index: 2;
@@ -48,16 +52,19 @@
             color: white;
             padding: 0 20px;
         }
+        
         .slider-content h1 {
             font-size: 52px;
             margin-bottom: 20px;
             line-height: 1.2;
         }
+        
         .slider-content p {
             font-size: 18px;
             margin-bottom: 30px;
             opacity: 0.9;
         }
+        
         .slider-btn {
             position: absolute;
             top: 50%;
@@ -73,11 +80,19 @@
             font-size: 20px;
             transition: all 0.3s;
         }
+        
         .slider-btn:hover {
             background: #e67e22;
         }
-        .slider-btn.prev { left: 20px; }
-        .slider-btn.next { right: 20px; }
+        
+        .slider-btn.prev {
+            left: 20px;
+        }
+        
+        .slider-btn.next {
+            right: 20px;
+        }
+        
         .slider-dots {
             position: absolute;
             bottom: 30px;
@@ -87,6 +102,7 @@
             gap: 12px;
             z-index: 10;
         }
+        
         .dot {
             width: 12px;
             height: 12px;
@@ -95,15 +111,26 @@
             cursor: pointer;
             transition: all 0.3s;
         }
+        
         .dot.active {
             background: #e67e22;
             width: 30px;
             border-radius: 10px;
         }
+        
         @media (max-width: 768px) {
-            .slider-container { height: 70vh; min-height: 400px; }
-            .slider-content h1 { font-size: 32px; }
-            .slider-btn { width: 35px; height: 35px; font-size: 14px; }
+            .slider-container {
+                height: 70vh;
+                min-height: 400px;
+            }
+            .slider-content h1 {
+                font-size: 32px;
+            }
+            .slider-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
@@ -137,27 +164,27 @@
         </div>
     </header>
 
-    <!-- Слайдер -->
+    <!-- Слайдер с новыми рабочими ссылками -->
     <div class="slider-container" id="slider">
-        <div class="slider-slide active" style="background-image: url('https://images.pexels.com/photos/2760242/pexels-photo-2760242.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+        <div class="slider-slide active" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/House_construction_2021.jpg/1024px-House_construction_2021.jpg');">
             <div class="container">
                 <div class="slider-content">
                     <h1>Строительство домов <span class="accent">под ключ</span></h1>
-                    <p>Возводим надёжные и красивые дома с гарантией качества 5 лет.</p>
+                    <p>Возводим надёжные и красивые дома с гарантией качества 5 лет. Работаем по всей России.</p>
                     <a href="catalog.html" class="btn btn-primary">Узнать подробнее</a>
                 </div>
             </div>
         </div>
-        <div class="slider-slide" style="background-image: url('https://images.pexels.com/photos/2760250/pexels-photo-2760250.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+        <div class="slider-slide" style="background-image: url('https://images.pexels.com/photos/164558/pexels-photo-164558.jpeg');">
             <div class="container">
                 <div class="slider-content">
                     <h1>Ремонт помещений <span class="accent">любой сложности</span></h1>
-                    <p>Косметический, капитальный, евроремонт квартир, домов и офисов.</p>
+                    <p>Косметический, капитальный, евроремонт квартир, домов и офисов. Соблюдаем сроки и бюджет.</p>
                     <a href="catalog.html" class="btn btn-primary">Рассчитать стоимость</a>
                 </div>
             </div>
         </div>
-        <div class="slider-slide" style="background-image: url('https://images.pexels.com/photos/209296/pexels-photo-209296.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+        <div class="slider-slide" style="background-image: url('https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg');">
             <div class="container">
                 <div class="slider-content">
                     <h1>Дизайн и отделка <span class="accent">интерьеров</span></h1>
@@ -171,35 +198,33 @@
         <div class="slider-dots" id="sliderDots"></div>
     </div>
 
-    <!-- Преимущества (исправлено: h3 → h2) -->
     <section class="features">
         <div class="container">
             <div class="features-grid">
                 <div class="feature-item">
                     <i class="fas fa-trophy"></i>
-                    <h2>15+ лет опыта</h2>
+                    <h3>15+ лет опыта</h3>
                     <p>На рынке строительства с 2008 года</p>
                 </div>
                 <div class="feature-item">
                     <i class="fas fa-users"></i>
-                    <h2>350+ объектов</h2>
+                    <h3>350+ объектов</h3>
                     <p>Успешно реализованных проектов</p>
                 </div>
                 <div class="feature-item">
                     <i class="fas fa-calendar-check"></i>
-                    <h2>Соблюдаем сроки</h2>
+                    <h3>Соблюдаем сроки</h3>
                     <p>Договорная ответственность за задержки</p>
                 </div>
                 <div class="feature-item">
                     <i class="fas fa-shield-alt"></i>
-                    <h2>Гарантия 5 лет</h2>
+                    <h3>Гарантия 5 лет</h3>
                     <p>На все виды работ</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Услуги -->
     <section class="services" id="services">
         <div class="container">
             <div class="section-header">
@@ -210,7 +235,7 @@
                 <div class="service-card">
                     <i class="fas fa-drafting-compass"></i>
                     <h3>Проектирование</h3>
-                    <p>Разработка архитектурных решений любой сложности.</p>
+                    <p>Разработка архитектурных и конструктивных решений любой сложности.</p>
                     <a href="catalog.html" class="service-link">Подробнее →</a>
                 </div>
                 <div class="service-card">
@@ -247,13 +272,13 @@
         </div>
     </section>
 
-    <!-- О компании -->
     <section class="about" id="about">
         <div class="container">
             <div class="about-wrapper">
                 <div class="about-text">
                     <h2>О компании «МегаСтрой»</h2>
-                    <p>Работаем на рынке строительства с 2008 года. Реализовано более 300 проектов.</p>
+                    <p>Мы работаем на рынке строительства с 2008 года. За это время реализовано более 300 проектов: от частных домов до крупных жилых комплексов.</p>
+                    <p>Наш подход — полная прозрачность, соблюдение сроков и использование только сертифицированных материалов. В штате только аттестованные инженеры и бригады с опытом от 7 лет.</p>
                     <div class="about-stats">
                         <div><span>15+</span><br>лет опыта</div>
                         <div><span>350+</span><br>объектов</div>
@@ -261,13 +286,12 @@
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.pexels.com/photos/7711485/pexels-photo-7711485.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Строители на объекте">
+                    <img src="/img/строители на обьекте.jpg" alt="Строители на объекте">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Отзывы (исправлено: h4 → h3) -->
     <section class="reviews">
         <div class="container">
             <div class="section-header">
@@ -277,33 +301,33 @@
             <div class="reviews-grid">
                 <div class="review-card">
                     <i class="fas fa-quote-left"></i>
-                    <p>Заказывали строительство дома под ключ. Всё сделано в срок и с отличным качеством.</p>
+                    <p>Заказывали строительство дома под ключ. Работой довольны полностью — всё сделано в срок и с отличным качеством.</p>
                     <div class="review-author">
                         <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Клиент">
                         <div>
-                            <h3>Александр Петров</h3>
+                            <h4>Александр Петров</h4>
                             <span>Коттедж "Сосновый бор"</span>
                         </div>
                     </div>
                 </div>
                 <div class="review-card">
                     <i class="fas fa-quote-left"></i>
-                    <p>Делали капитальный ремонт в трёхкомнатной квартире. Всё на высшем уровне.</p>
+                    <p>Делали капитальный ремонт в трёхкомнатной квартире. Дизайн-проект, подбор материалов, ремонт — всё на высшем уровне.</p>
                     <div class="review-author">
                         <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Клиент">
                         <div>
-                            <h3>Елена Смирнова</h3>
+                            <h4>Елена Смирнова</h4>
                             <span>ЖК "Небо"</span>
                         </div>
                     </div>
                 </div>
                 <div class="review-card">
                     <i class="fas fa-quote-left"></i>
-                    <p>Профессиональный подход. Помогли с утеплением фасада и заменой кровли.</p>
+                    <p>Профессиональный подход и отличная команда. Помогли с утеплением фасада и заменой кровли.</p>
                     <div class="review-author">
                         <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Клиент">
                         <div>
-                            <h3>Игорь Васильев</h3>
+                            <h4>Игорь Васильев</h4>
                             <span>Частный дом</span>
                         </div>
                     </div>
@@ -312,7 +336,6 @@
         </div>
     </section>
 
-    <!-- Контакты -->
     <section class="contacts" id="contacts">
         <div class="container">
             <div class="contacts-wrapper">
@@ -344,6 +367,10 @@
         <div class="container">
             <div class="footer-inner">
                 <div class="footer-copy">© 2026 МегаСтрой. Все права защищены.</div>
+                <div class="footer-links">
+                    <a href="#">Политика конфиденциальности</a>
+                    <a href="#">Договор оферты</a>
+                </div>
                 <div class="footer-social">
                     <a href="#"><i class="fab fa-vk"></i></a>
                     <a href="#"><i class="fab fa-telegram"></i></a>
@@ -355,7 +382,6 @@
 
     <script src="script.js"></script>
     <script>
-        // Слайдер
         const slides = document.querySelectorAll('.slider-slide');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
@@ -380,20 +406,57 @@
             dots[currentSlide].classList.add('active');
         }
 
-        prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
-        nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+        function nextSlide() {
+            goToSlide(currentSlide + 1);
+        }
 
-        // Авторизация
+        function prevSlide() {
+            goToSlide(currentSlide - 1);
+        }
+
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+
         function updateAuthUI() {
             const currentUser = localStorage.getItem('currentUser');
             const authButton = document.getElementById('authButton');
+            
             if (currentUser) {
                 const user = JSON.parse(currentUser);
-                authButton.innerHTML = `<a href="profile.html" class="btn-register"><i class="fas fa-user-circle"></i> ${user.name}</a>`;
+                authButton.innerHTML = `
+                    <div class="user-menu" style="position: relative;">
+                        <span class="user-name" style="background: #e67e22; color: white; padding: 8px 16px; border-radius: 30px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                            <i class="fas fa-user-circle"></i> ${user.name}
+                        </span>
+                        <div class="user-dropdown" style="display: none; position: absolute; right: 0; top: 45px; background: white; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 12px; overflow: hidden; min-width: 180px; z-index: 100;">
+                            <a href="profile.html" style="display: flex; align-items: center; gap: 10px; padding: 12px 20px; text-decoration: none; color: #1e2a3a;"><i class="fas fa-id-card"></i> Личный кабинет</a>
+                            <a href="#" id="logoutBtn" style="display: flex; align-items: center; gap: 10px; padding: 12px 20px; text-decoration: none; color: #1e2a3a;"><i class="fas fa-sign-out-alt"></i> Выйти</a>
+                        </div>
+                    </div>
+                `;
+                const userMenu = document.querySelector('.user-menu');
+                const userDropdown = document.querySelector('.user-dropdown');
+                if (userMenu) {
+                    userMenu.addEventListener('mouseenter', () => {
+                        userDropdown.style.display = 'block';
+                    });
+                    userMenu.addEventListener('mouseleave', () => {
+                        userDropdown.style.display = 'none';
+                    });
+                }
+                const logoutBtn = document.getElementById('logoutBtn');
+                if (logoutBtn) {
+                    logoutBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        localStorage.removeItem('currentUser');
+                        window.location.href = 'index.html';
+                    });
+                }
             } else {
                 authButton.innerHTML = `<a href="register.html" class="btn-register"><i class="fas fa-user-plus"></i> Вход/Регистрация</a>`;
             }
         }
+        
         updateAuthUI();
     </script>
 </body>

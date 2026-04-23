@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Наши проекты - МегаСтрой</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="/index.html">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -84,9 +83,7 @@
                         <i class="fas fa-phone-alt"></i>
                         <a href="tel:+78121234567">+7 (812) 123-45-67</a>
                     </div>
-                    <a href="register.html" class="btn-register">
-                        <i class="fas fa-user-plus"></i> Вход/Регистрация
-                    </a>
+                    <div id="authButton"></div>
                 </div>
                 <button class="mobile-toggle" id="mobileToggle">
                     <i class="fas fa-bars"></i>
@@ -106,7 +103,7 @@
         <div class="container">
             <div class="projects-grid">
                 <div class="project-card">
-                    <img src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Коттедж Сосновый бор">
+                    <img src="/img/сосновый бор.jpg" alt="Коттедж Сосновый бор">
                     <div class="project-info">
                         <h3>Коттедж "Сосновый бор"</h3>
                         <div class="project-meta">
@@ -119,7 +116,7 @@
                 </div>
 
                 <div class="project-card">
-                    <img src="https://images.pexels.com/photos/2587054/pexels-photo-2587054.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Бизнес-центр Премьер">
+                    <img src="/img/бизнес центр премьер.jpg" alt="Бизнес-центр Премьер">
                     <div class="project-info">
                         <h3>Бизнес-центр "Премьер"</h3>
                         <div class="project-meta">
@@ -132,7 +129,7 @@
                 </div>
 
                 <div class="project-card">
-                    <img src="https://images.pexels.com/photos/209296/pexels-photo-209296.jpeg?auto=compress&cs=tinysrgb&w=800" alt="ЖК Небо">
+                    <img src="/img/жк небо.jpg" alt="ЖК Небо">
                     <div class="project-info">
                         <h3>Жилой комплекс "Небо"</h3>
                         <div class="project-meta">
@@ -145,7 +142,7 @@
                 </div>
 
                 <div class="project-card">
-                    <img src="https://images.pexels.com/photos/164558/pexels-photo-164558.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Загородный клуб">
+                    <img src="/img/загородный клуб.jpg" alt="Загородный клуб">
                     <div class="project-info">
                         <h3>Загородный клуб "Лесной"</h3>
                         <div class="project-meta">
@@ -158,7 +155,7 @@
                 </div>
 
                 <div class="project-card">
-                    <img src="https://images.pexels.com/photos/2219024/pexels-photo-2219024.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Таунхаусы">
+                    <img src="/img/таунхаусы.jpg" alt="Таунхаусы">
                     <div class="project-info">
                         <h3>Комплекс таунхаусов "Green Park"</h3>
                         <div class="project-meta">
@@ -171,7 +168,7 @@
                 </div>
 
                 <div class="project-card">
-                    <img src="https://images.pexels.com/photos/2760242/pexels-photo-2760242.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Ремонт офиса">
+                    <img src="/img/ремонт офиса.jpg" alt="Ремонт офиса">
                     <div class="project-info">
                         <h3>Офис IT-компании</h3>
                         <div class="project-meta">
@@ -189,7 +186,7 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-inner">
-                <div class="footer-copy">© 2026 МегаСтрой. Все права защищены.</div>
+                <div class="footer-copy">© 2025 МегаСтрой. Все права защищены.</div>
                 <div class="footer-links">
                     <a href="#">Политика конфиденциальности</a>
                     <a href="#">Договор оферты</a>
@@ -204,5 +201,40 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        function updateAuthUI() {
+            const currentUser = localStorage.getItem('currentUser');
+            const authButton = document.getElementById('authButton');
+            
+            if (currentUser) {
+                const user = JSON.parse(currentUser);
+                authButton.innerHTML = `
+                    <div class="user-menu" style="position: relative;">
+                        <span class="user-name" style="background: #e67e22; color: white; padding: 8px 16px; border-radius: 30px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                            <i class="fas fa-user-circle"></i> ${user.name}
+                        </span>
+                        <div class="user-dropdown" style="display: none; position: absolute; right: 0; top: 45px; background: white; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 12px; overflow: hidden; min-width: 180px; z-index: 100;">
+                            <a href="profile.html" style="display: flex; align-items: center; gap: 10px; padding: 12px 20px; text-decoration: none; color: #1e2a3a;"><i class="fas fa-id-card"></i> Личный кабинет</a>
+                            <a href="#" id="logoutBtn" style="display: flex; align-items: center; gap: 10px; padding: 12px 20px; text-decoration: none; color: #1e2a3a;"><i class="fas fa-sign-out-alt"></i> Выйти</a>
+                        </div>
+                    </div>
+                `;
+                const userMenu = document.querySelector('.user-menu');
+                const userDropdown = document.querySelector('.user-dropdown');
+                if (userMenu) {
+                    userMenu.addEventListener('mouseenter', () => { userDropdown.style.display = 'block'; });
+                    userMenu.addEventListener('mouseleave', () => { userDropdown.style.display = 'none'; });
+                }
+                document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    localStorage.removeItem('currentUser');
+                    window.location.href = 'index.html';
+                });
+            } else {
+                authButton.innerHTML = `<a href="register.html" class="btn-register"><i class="fas fa-user-plus"></i> Вход/Регистрация</a>`;
+            }
+        }
+        updateAuthUI();
+    </script>
 </body>
 </html>

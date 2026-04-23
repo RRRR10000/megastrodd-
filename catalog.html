@@ -30,9 +30,7 @@
                         <i class="fas fa-phone-alt"></i>
                         <a href="tel:+78121234567">+7 (812) 123-45-67</a>
                     </div>
-                    <a href="register.html" class="btn-register">
-                        <i class="fas fa-user-plus"></i> Вход/Регистрация
-                    </a>
+                    <div id="authButton"></div>
                 </div>
                 <button class="mobile-toggle" id="mobileToggle">
                     <i class="fas fa-bars"></i>
@@ -61,7 +59,7 @@
             <div class="catalog-grid">
                 <div class="catalog-item" data-category="design">
                     <div class="catalog-image">
-                        <img src="https://images.pexels.com/photos/2121121/pexels-photo-2121121.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Проектирование">
+                        <img src="/img/проектирование.jpg" alt="Проектирование">
                         <div class="catalog-badge">Популярное</div>
                     </div>
                     <div class="catalog-content">
@@ -78,7 +76,7 @@
 
                 <div class="catalog-item" data-category="building">
                     <div class="catalog-image">
-                        <img src="https://images.pexels.com/photos/280229/pexels-photo-280229.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Строительство домов">
+                        <img src="/img/строительство домов.jpg" alt="Строительство домов">
                     </div>
                     <div class="catalog-content">
                         <h3>Строительство домов</h3>
@@ -94,7 +92,7 @@
 
                 <div class="catalog-item" data-category="repair">
                     <div class="catalog-image">
-                        <img src="https://images.pexels.com/photos/2760250/pexels-photo-2760250.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Капитальный ремонт">
+                        <img src="/img/капитальный ремонт дома.jpg" alt="Капитальный ремонт">
                         <div class="catalog-badge">Акция -15%</div>
                     </div>
                     <div class="catalog-content">
@@ -111,7 +109,7 @@
 
                 <div class="catalog-item" data-category="finish">
                     <div class="catalog-image">
-                        <img src="https://images.pexels.com/photos/6457577/pexels-photo-6457577.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Дизайн интерьера">
+                        <img src="/img/дизайн интерьера.jpg" alt="Дизайн интерьера">
                     </div>
                     <div class="catalog-content">
                         <h3>Дизайн интерьера</h3>
@@ -127,7 +125,7 @@
 
                 <div class="catalog-item" data-category="building">
                     <div class="catalog-image">
-                        <img src="https://images.pexels.com/photos/209296/pexels-photo-209296.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Кровельные работы">
+                        <img src="/img/кровельные работы.jpg" alt="Кровельные работы">
                     </div>
                     <div class="catalog-content">
                         <h3>Кровельные работы</h3>
@@ -143,7 +141,7 @@
 
                 <div class="catalog-item" data-category="finish">
                     <div class="catalog-image">
-                        <img src="https://images.pexels.com/photos/164558/pexels-photo-164558.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Фасадные работы">
+                       <img src="/img/955854fa-af88-46e0-abc6-5c0d8f391e64.png" alt="Фасадные работы">
                     </div>
                     <div class="catalog-content">
                         <h3>Фасадные работы</h3>
@@ -179,7 +177,6 @@
 
     <script src="script.js"></script>
     <script>
-        // Фильтрация каталога
         const filterBtns = document.querySelectorAll('.filter-btn');
         const catalogItems = document.querySelectorAll('.catalog-item');
 
@@ -198,6 +195,40 @@
                 });
             });
         });
+
+        function updateAuthUI() {
+            const currentUser = localStorage.getItem('currentUser');
+            const authButton = document.getElementById('authButton');
+            
+            if (currentUser) {
+                const user = JSON.parse(currentUser);
+                authButton.innerHTML = `
+                    <div class="user-menu" style="position: relative;">
+                        <span class="user-name" style="background: #e67e22; color: white; padding: 8px 16px; border-radius: 30px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                            <i class="fas fa-user-circle"></i> ${user.name}
+                        </span>
+                        <div class="user-dropdown" style="display: none; position: absolute; right: 0; top: 45px; background: white; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 12px; overflow: hidden; min-width: 180px; z-index: 100;">
+                            <a href="profile.html" style="display: flex; align-items: center; gap: 10px; padding: 12px 20px; text-decoration: none; color: #1e2a3a;"><i class="fas fa-id-card"></i> Личный кабинет</a>
+                            <a href="#" id="logoutBtn" style="display: flex; align-items: center; gap: 10px; padding: 12px 20px; text-decoration: none; color: #1e2a3a;"><i class="fas fa-sign-out-alt"></i> Выйти</a>
+                        </div>
+                    </div>
+                `;
+                const userMenu = document.querySelector('.user-menu');
+                const userDropdown = document.querySelector('.user-dropdown');
+                if (userMenu) {
+                    userMenu.addEventListener('mouseenter', () => { userDropdown.style.display = 'block'; });
+                    userMenu.addEventListener('mouseleave', () => { userDropdown.style.display = 'none'; });
+                }
+                document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    localStorage.removeItem('currentUser');
+                    window.location.href = 'index.html';
+                });
+            } else {
+                authButton.innerHTML = `<a href="register.html" class="btn-register"><i class="fas fa-user-plus"></i> Вход/Регистрация</a>`;
+            }
+        }
+        updateAuthUI();
     </script>
 </body>
 </html>

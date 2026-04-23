@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация и вход - МегаСтрой</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .auth-page {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            padding: 60px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .auth-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .auth-tabs {
+            display: flex;
+            border-bottom: 2px solid #eee;
+        }
+        .auth-tab {
+            flex: 1;
+            text-align: center;
+            padding: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            background: #f8fafc;
+        }
+        .auth-tab.active {
+            background: white;
+            color: #e67e22;
+            border-bottom: 3px solid #e67e22;
+        }
+        .auth-form {
+            padding: 40px;
+            display: none;
+        }
+        .auth-form.active {
+            display: block;
+        }
+        .auth-form h2 {
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        .auth-form p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: #e67e22;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .auth-btn {
+            width: 100%;
+            padding: 14px;
+            background: #e67e22;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .auth-btn:hover {
+            background: #d35400;
+        }
+        .social-login {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .social-icons a {
+            width: 45px;
+            height: 45px;
+            background: #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-size: 20px;
+            transition: all 0.3s;
+        }
+        .social-icons a:hover {
+            background: #e67e22;
+            color: white;
+            transform: translateY(-3px);
+        }
+        .header-auth {
+            background: rgba(255,255,255,0.95);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header header-auth">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <i class="fas fa-hard-hat"></i>
+                    <span>Мега<span class="accent">Строй</span></span>
+                </div>
+                <nav class="nav">
+                    <a href="index.html">Главная</a>
+                    <a href="catalog.html">Услуги</a>
+                    <a href="projects.html">Проекты</a>
+                    <a href="index.html#about">О компании</a>
+                    <a href="index.html#contacts">Контакты</a>
+                </nav>
+                <div class="header-right">
+                    <div class="header-phone">
+                        <i class="fas fa-phone-alt"></i>
+                        <a href="tel:+78121234567">+7 (812) 123-45-67</a>
+                    </div>
+                    <a href="register.html" class="btn-register active-btn">
+                        <i class="fas fa-user-plus"></i> Вход/Регистрация
+                    </a>
+                </div>
+                <button class="mobile-toggle" id="mobileToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="auth-page">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-tabs">
+                    <div class="auth-tab active" data-tab="login">Вход</div>
+                    <div class="auth-tab" data-tab="register">Регистрация</div>
+                </div>
+
+                <!-- Форма входа -->
+                <div class="auth-form active" id="login-form">
+                    <h2>Добро пожаловать!</h2>
+                    <p>Войдите в свой аккаунт</p>
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <input type="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" placeholder="Пароль" required>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="remember">
+                            <label for="remember">Запомнить меня</label>
+                        </div>
+                        <button type="submit" class="auth-btn">Войти</button>
+                    </form>
+                    <div class="social-login">
+                        <p>Или войдите через</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-vk"></i></a>
+                            <a href="#"><i class="fab fa-google"></i></a>
+                            <a href="#"><i class="fab fa-apple"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Форма регистрации -->
+                <div class="auth-form" id="register-form">
+                    <h2>Создать аккаунт</h2>
+                    <p>Зарегистрируйтесь для получения персональных скидок</p>
+                    <form id="registerForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Телефон" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" placeholder="Пароль" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" placeholder="Подтвердите пароль" required>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="agree" required>
+                            <label for="agree">Я согласен с условиями обработки персональных данных</label>
+                        </div>
+                        <button type="submit" class="auth-btn">Зарегистрироваться</button>
+                    </form>
+                    <div class="social-login">
+                        <p>Или зарегистрируйтесь через</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-vk"></i></a>
+                            <a href="#"><i class="fab fa-google"></i></a>
+                            <a href="#"><i class="fab fa-apple"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-copy">© 2026 МегаСтрой. Все права защищены.</div>
+                <div class="footer-links">
+                    <a href="#">Политика конфиденциальности</a>
+                    <a href="#">Договор оферты</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Переключение между формами
+        const tabs = document.querySelectorAll('.auth-tab');
+        const forms = document.querySelectorAll('.auth-form');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabId = tab.dataset.tab;
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                forms.forEach(form => form.classList.remove('active'));
+                document.getElementById(`${tabId}-form`).classList.add('active');
+            });
+        });
+
+        // Обработка отправки форм
+        document.getElementById('loginForm')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Успешный вход! Добро пожаловать в личный кабинет.');
+            window.location.href = 'profile.html';
+        });
+
+        document.getElementById('registerForm')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Регистрация успешно завершена! Теперь вы можете войти.');
+            document.querySelector('[data-tab="login"]').click();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>МегаСтрой - Строительство и ремонт под ключ</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 85vh;
+            min-height: 500px;
+            overflow: hidden;
+        }
+        .slider-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            display: flex;
+            align-items: center;
+        }
+        .slider-slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+        .slider-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+        }
+        .slider-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            color: white;
+            padding: 0 20px;
+        }
+        .slider-content h1 {
+            font-size: 52px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .slider-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.3);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 20px;
+            transition: all 0.3s;
+        }
+        .slider-btn:hover {
+            background: #e67e22;
+        }
+        .slider-btn.prev { left: 20px; }
+        .slider-btn.next { right: 20px; }
+        .slider-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .dot.active {
+            background: #e67e22;
+            width: 30px;
+            border-radius: 10px;
+        }
+        @media (max-width: 768px) {
+            .slider-container { height: 70vh; min-height: 400px; }
+            .slider-content h1 { font-size: 32px; }
+            .slider-btn { width: 35px; height: 35px; font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <i class="fas fa-hard-hat"></i>
+                    <span>Мега<span class="accent">Строй</span></span>
+                </div>
+                <nav class="nav">
+                    <a href="index.html">Главная</a>
+                    <a href="catalog.html">Услуги</a>
+                    <a href="projects.html">Проекты</a>
+                    <a href="#about">О компании</a>
+                    <a href="#contacts">Контакты</a>
+                </nav>
+                <div class="header-right" id="headerRight">
+                    <div class="header-phone">
+                        <i class="fas fa-phone-alt"></i>
+                        <a href="tel:+78121234567">+7 (812) 123-45-67</a>
+                    </div>
+                    <div id="authButton"></div>
+                </div>
+                <button class="mobile-toggle" id="mobileToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Слайдер -->
+    <div class="slider-container" id="slider">
+        <div class="slider-slide active" style="background-image: url('https://images.pexels.com/photos/2760242/pexels-photo-2760242.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+            <div class="container">
+                <div class="slider-content">
+                    <h1>Строительство домов <span class="accent">под ключ</span></h1>
+                    <p>Возводим надёжные и красивые дома с гарантией качества 5 лет.</p>
+                    <a href="catalog.html" class="btn btn-primary">Узнать подробнее</a>
+                </div>
+            </div>
+        </div>
+        <div class="slider-slide" style="background-image: url('https://images.pexels.com/photos/2760250/pexels-photo-2760250.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+            <div class="container">
+                <div class="slider-content">
+                    <h1>Ремонт помещений <span class="accent">любой сложности</span></h1>
+                    <p>Косметический, капитальный, евроремонт квартир, домов и офисов.</p>
+                    <a href="catalog.html" class="btn btn-primary">Рассчитать стоимость</a>
+                </div>
+            </div>
+        </div>
+        <div class="slider-slide" style="background-image: url('https://images.pexels.com/photos/209296/pexels-photo-209296.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+            <div class="container">
+                <div class="slider-content">
+                    <h1>Дизайн и отделка <span class="accent">интерьеров</span></h1>
+                    <p>Создаём уникальные дизайн-проекты и воплощаем их с идеальным качеством.</p>
+                    <a href="catalog.html" class="btn btn-primary">Заказать проект</a>
+                </div>
+            </div>
+        </div>
+        <button class="slider-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+        <div class="slider-dots" id="sliderDots"></div>
+    </div>
+
+    <!-- Преимущества (исправлено: h3 → h2) -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="fas fa-trophy"></i>
+                    <h2>15+ лет опыта</h2>
+                    <p>На рынке строительства с 2008 года</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-users"></i>
+                    <h2>350+ объектов</h2>
+                    <p>Успешно реализованных проектов</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-calendar-check"></i>
+                    <h2>Соблюдаем сроки</h2>
+                    <p>Договорная ответственность за задержки</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h2>Гарантия 5 лет</h2>
+                    <p>На все виды работ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Услуги -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Наши услуги</h2>
+                <p>Полный цикл строительных и отделочных работ</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-drafting-compass"></i>
+                    <h3>Проектирование</h3>
+                    <p>Разработка архитектурных решений любой сложности.</p>
+                    <a href="catalog.html" class="service-link">Подробнее →</a>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-home"></i>
+                    <h3>Строительство домов</h3>
+                    <p>Кирпичные, монолитные, каркасные дома под ключ.</p>
+                    <a href="catalog.html" class="service-link">Подробнее →</a>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-wrench"></i>
+                    <h3>Ремонт помещений</h3>
+                    <p>Косметический, капитальный, евроремонт квартир и офисов.</p>
+                    <a href="catalog.html" class="service-link">Подробнее →</a>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-hard-hat"></i>
+                    <h3>Фасадные работы</h3>
+                    <p>Утепление, облицовка, вентилируемые фасады.</p>
+                    <a href="catalog.html" class="service-link">Подробнее →</a>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-tools"></i>
+                    <h3>Инженерные сети</h3>
+                    <p>Электрика, отопление, водоснабжение, вентиляция.</p>
+                    <a href="catalog.html" class="service-link">Подробнее →</a>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-paint-roller"></i>
+                    <h3>Отделка интерьеров</h3>
+                    <p>Дизайн-проект, подбор материалов, чистовое покрытие.</p>
+                    <a href="catalog.html" class="service-link">Подробнее →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- О компании -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-wrapper">
+                <div class="about-text">
+                    <h2>О компании «МегаСтрой»</h2>
+                    <p>Работаем на рынке строительства с 2008 года. Реализовано более 300 проектов.</p>
+                    <div class="about-stats">
+                        <div><span>15+</span><br>лет опыта</div>
+                        <div><span>350+</span><br>объектов</div>
+                        <div><span>98%</span><br>довольных клиентов</div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.pexels.com/photos/7711485/pexels-photo-7711485.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Строители на объекте">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Отзывы (исправлено: h4 → h3) -->
+    <section class="reviews">
+        <div class="container">
+            <div class="section-header">
+                <h2>Отзывы наших клиентов</h2>
+                <p>Нас рекомендуют друзьям и знакомым</p>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <i class="fas fa-quote-left"></i>
+                    <p>Заказывали строительство дома под ключ. Всё сделано в срок и с отличным качеством.</p>
+                    <div class="review-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Клиент">
+                        <div>
+                            <h3>Александр Петров</h3>
+                            <span>Коттедж "Сосновый бор"</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <i class="fas fa-quote-left"></i>
+                    <p>Делали капитальный ремонт в трёхкомнатной квартире. Всё на высшем уровне.</p>
+                    <div class="review-author">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Клиент">
+                        <div>
+                            <h3>Елена Смирнова</h3>
+                            <span>ЖК "Небо"</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <i class="fas fa-quote-left"></i>
+                    <p>Профессиональный подход. Помогли с утеплением фасада и заменой кровли.</p>
+                    <div class="review-author">
+                        <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Клиент">
+                        <div>
+                            <h3>Игорь Васильев</h3>
+                            <span>Частный дом</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section class="contacts" id="contacts">
+        <div class="container">
+            <div class="contacts-wrapper">
+                <div class="contacts-info">
+                    <h2>Свяжитесь с нами</h2>
+                    <p>Оставьте заявку — мы перезвоним в течение 15 минут</p>
+                    <div class="contact-detail">
+                        <i class="fas fa-map-marker-alt"></i> Стерлитамак, проспект Октября, 36
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-phone-alt"></i> <a href="tel:+78121234567">+7 (812) 123-45-67</a>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-envelope"></i> <a href="mailto:info@megastroy.com">info@megastroy.com</a>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <input type="text" placeholder="Ваше имя" required>
+                    <input type="tel" placeholder="Телефон" required>
+                    <input type="email" placeholder="E-mail">
+                    <textarea rows="4" placeholder="Опишите задачу..."></textarea>
+                    <button type="submit" class="btn btn-primary">Отправить заявку</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-copy">© 2026 МегаСтрой. Все права защищены.</div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Слайдер
+        const slides = document.querySelectorAll('.slider-slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const dotsContainer = document.getElementById('sliderDots');
+        let currentSlide = 0;
+
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+
+        function goToSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+        nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+
+        // Авторизация
+        function updateAuthUI() {
+            const currentUser = localStorage.getItem('currentUser');
+            const authButton = document.getElementById('authButton');
+            if (currentUser) {
+                const user = JSON.parse(currentUser);
+                authButton.innerHTML = `<a href="profile.html" class="btn-register"><i class="fas fa-user-circle"></i> ${user.name}</a>`;
+            } else {
+                authButton.innerHTML = `<a href="register.html" class="btn-register"><i class="fas fa-user-plus"></i> Вход/Регистрация</a>`;
+            }
+        }
+        updateAuthUI();
+    </script>
+</body>
+</html>
